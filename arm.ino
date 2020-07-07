@@ -31,7 +31,6 @@ void loop()
   while (Serial.available()==0){}
   Y=Serial.parseFloat();
   
-   
    float a=(pow(X,2)+pow(Y,2)-pow(L1,2)-pow(L2,2))/(2*L1*L2);
    q2=acos(a);
    Q2=q2*180/PI;
@@ -49,28 +48,30 @@ void loop()
    servo1.write(Q2);
    delay(5000);
  }
- else if(type=="f"){
+ 
+  else if(type=="f"){
   Serial.println("Please inter Q1");
   while (Serial.available()==0){}
   q1=Serial.parseInt();
   Serial.println("Please inter Q2");
   while (Serial.available()==0){}
   q2=Serial.parseInt();
-   servo.write(q1);
-   servo1.write(q2);
-   Q1=q1*PI/180;
-   Q2=q2*PI/180;
-   X=(L1*cos(Q1))+(L2*cos(Q1+Q2));
-   Y=(L1*sin(Q1))+(L2*sin(Q1+Q2));
-   Serial.print("\nX=");
-   Serial.print(X);
-   Serial.print("\tY=");
-   Serial.println(Y);
-   Serial.print("\nQ1=");
-   Serial.print(q1);
-   Serial.print("\tQ2=  ");
-   Serial.println(q2);
-   delay(5000);
+  servo.write(q1);
+  servo1.write(q2);
+    
+  Q1=q1*PI/180;
+  Q2=q2*PI/180;
+  X=(L1*cos(Q1))+(L2*cos(Q1+Q2));
+  Y=(L1*sin(Q1))+(L2*sin(Q1+Q2));
+    
+  Serial.print("\nX=");
+  Serial.print(X);   Serial.print("\tY=");
+  Serial.println(Y);
+  Serial.print("\nQ1=");
+  Serial.print(q1);
+  Serial.print("\tQ2=  ");
+  Serial.println(q2);
+  delay(5000);
  }
  else {Serial.print("Please inter the correct choice ");delay(5000);}
 }
